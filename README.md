@@ -28,7 +28,7 @@
 
 3. 앱 사용자는 `AWS 자격 증명`을 사용하여 Amazon S3 또는 DynamoDB등 기타 AWS 서비스에 액세스 할 수 있습니다.
 
-| ![aws cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/images/scenario-cup-cib2.png) |
+| <img src="https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/images/scenario-cup-cib2.png" width="600" height="700"> |
 | :--: |
 | [AWS Cognito Scenario Diagram](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) |
 
