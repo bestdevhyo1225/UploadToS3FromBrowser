@@ -33,3 +33,7 @@
 | [AWS Cognito Scenario Diagram](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) |
 
 <br>
+
+### :bookmark: 참고
+
+* [AWS Cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) 
