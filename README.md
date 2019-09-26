@@ -18,6 +18,8 @@
 
     * 기타 AWS 서비스에 대한 사용자 액세스 권한을 부여할 수 있습니다.
 
+<br>
+
 `Cognito`의 목표는 사용자 인증 이후, AWS 서비스에 대한 액세스 권한을 부여하는 것입니다.
 
 1. 사용자는 **사용자 풀**을 통해 로그인하여 인증을 성공한 후, `사용자 풀 토큰`을 받습니다.
@@ -29,3 +31,5 @@
 | ![aws cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/images/scenario-cup-cib2.png) |
 | :--: |
 | [AWS Cognito Scenario Diagram](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) |
+
+<br>
