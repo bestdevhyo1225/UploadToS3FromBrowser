@@ -20,17 +20,31 @@
 
 <br>
 
-`Cognito`의 목표는 사용자 인증 이후, AWS 서비스에 대한 액세스 권한을 부여하는 것입니다.
+### :book: Cognito 자격 증명 풀을 사용하기(연동 자격 증명)
 
-1. 사용자는 **사용자 풀**을 통해 로그인하여 인증을 성공한 후, `사용자 풀 토큰`을 받습니다.
+`1. 자격 증명 풀 만들기`
 
-2. 앱은 **자격 증명 풀**을 통해 `사용자 풀 토큰`을 `AWS 자격 증명`으로 교환합니다.
+![image](https://user-images.githubusercontent.com/23515771/65931617-721eac80-e445-11e9-8fec-3e1ec193dbb4.png)
 
-3. 앱 사용자는 `AWS 자격 증명`을 사용하여 Amazon S3 또는 DynamoDB등 기타 AWS 서비스에 액세스 할 수 있습니다.
+1. 자격 증명 풀 이름을 작성합니다.
 
-| <img src="https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/images/scenario-cup-cib2.png" width="600" height="700"> |
-| :--: |
-| [AWS Cognito Scenario Diagram](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) |
+2. 인증되지 않은 자격 증명에 대한 접근을 가능하게 하고 싶다면, `인증되지 않은 자격 증명에 대한 엑세스 활성화`를 체크합니다.
+
+3. 인증 공급자를 추가하고 싶다면, 사용자 풀에서 생성한 사용자 풀 ID, 앱 클라이언트 ID를 추가하여 공급자를 추가합니다.
+
+`2. 권한 설정`
+
+![image](https://user-images.githubusercontent.com/23515771/65931780-10127700-e446-11e9-9b67-236a1f2e501e.png)
+
+세부 정보를 클릭해서 확인하면, `인증된 사용자의 역할`과 `인증 되지 않은 사용자의 역할`을 확인할 수 있습니다.
+
+`인증되지 않은 자격 증명`
+
+* 지원되는 자격 증명 공급자가 인증한 사용자를 위한 것이다.
+
+`인증된 자격 증명`
+
+* 게스트 사용자를 위한 것이다.
 
 <br>
 
