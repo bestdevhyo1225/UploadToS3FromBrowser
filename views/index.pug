@@ -1,0 +1,11 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        script(src="https://sdk.amazonaws.com/js/aws-sdk-2.539.0.min.js")
+        script(src="https://kit.fontawesome.com/349e8f098a.js")
+    body
+        div(id="secret_cognito" style="display:none")=cogInfo
+    script
+        include ../public/js/index.js
