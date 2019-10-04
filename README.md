@@ -40,11 +40,125 @@
 
 `인증되지 않은 자격 증명`
 
-* 지원되는 자격 증명 공급자가 인증한 사용자를 위한 것이다.
+* 지원되는 자격 증명 공급자가 인증한 사용자를 위한 것입니다.
 
 `인증된 자격 증명`
 
-* 게스트 사용자를 위한 것이다.
+* 게스트 사용자를 위한 것입니다.
+
+<br>
+
+### :book: S3 버킷 생성
+
+S3 버킷을 생성하고 `권한`탭에서 `버킷 정책`과 `CORS`를 설정해야 합니다.
+
+`버킷 정책`
+
+* 버킷에 접근할 수 있는 역할을 정합니다. 이 역할 외에는 접근할 수 없습니다.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Id": "PolicyForCognitoIdentityPool",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::사용자_계정번호:role/인증된_자격_증명_풀_역할"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::버킷_이름/*"
+        },
+        {
+            "Sid": "2",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::사용자_계정번호:role/인증되지_않은_자격_증명_풀_역할"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::버킷_이름/*"
+        }
+    ]
+}
+```
+
+`CORS`
+
+* 브라우저 스크립트가 Amazon S3 버킷에 액세스 하려면 먼저 다음과 같이 CORS 구성을 설정해야 합니다.
+
+```html
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedMethod>DELETE</AllowedMethod>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+```
+
+<br>
+
+### :book: 아키텍쳐
+
+
+
+<br>
+
+### :book: SDK 구성 및 업로드 코드
+
+현재 웹 or 앱을 사용하는 사용자가 AWS S3 서비스에 접근하기 위해서는 `자격 증명 풀 ID`가 있어야 접근할 수 있습니다. 진행 과정은 사용자가 웹 페이지에 접속하고 나면, `Axios` 비동기 처리를 통해 서버로부터 `Cognito 정보`를 가지고 와서 AWS 서비스에 접근할 수 있도록 구현했습니다.
+
+`SDK 구성`
+
+```javascript
+// AWS 자격 인증
+const res = await axios.get('/secret');
+const cognitoInfo = res.data;
+AWS.config.update({
+    region: cognitoInfo.BUCKET_REGION,
+    credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: cognitoInfo.IDENTITY_POOL_ID
+    })
+});
+```
+
+`브라우저에서 S3로 업로드`
+
+```javascript
+// File Upload
+const file = files[0];
+const upload = new AWS.S3.ManagedUpload({ 
+    params: { 
+        Bucket: cognitoInfo.BUCKET_NAME,
+        Key: file.name,
+        Body: file,
+    } 
+});
+
+if (!await upload.promise()) {
+    alert('File upload fail!\n\nThe upload file does not exist.');
+}
+
+alert('File upload success!');
+```
+
+`직접 구현한 코드 참고하려면, 아래의 링크를 클릭하세요`
+
+* [views/index.pug](https://github.com/bestdevhyo1225/uploading-to-awss3-from-browser/blob/master/views/index.pug)
+
+* [public/js/index.js](https://github.com/bestdevhyo1225/uploading-to-awss3-from-browser/blob/master/public/js/index.js)
 
 <br>
 
@@ -56,7 +170,7 @@
 
 `2019년 10월 4일 (금)`
 
-* `AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고, 실행하니 된다. 왜 되는걸까?
+* `AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고 실행하니 됐다. 되는 이유는 `권한`탭에서 `모든 퍼블릭 액세스 차단`을 활성화 시켰기 때문에 버킷 정책에서 내가 접근할 수 있도록 설정한 역할만 접근할 수 있었던 것이다.
 * `putObject()`로 S3에 업로드하는 것과 `ManagedUpload()`를 사용하여 업로드 하는것의 차이는??
 
 <br>
