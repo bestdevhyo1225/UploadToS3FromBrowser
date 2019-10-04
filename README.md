@@ -48,6 +48,14 @@
 
 <br>
 
+### :memo: 개발 일지
+
+`2019년 10월 3일 (목)`
+
+* Cognito와 관련된 IAM 역할 2개(인증, 비인증)중에서 둘 다 S3에 접근할 수 있는 정책을 추가 했는데 `AccessDenied: Access Denied` 에러가 뜬다. S3 버킷 정책도 추가했지만 마찬가지로 똑같은 문제가 발생한다.
+
+<br>
+
 ### :bookmark: 참고
 
 * [AWS Cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) 
