@@ -175,4 +175,6 @@ alert('File upload success!');
 
 ### :bookmark: 참고
 
-* [AWS Cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html) 
+* [AWS Cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html)
+
+* [Uploading to S3 from a Browser](https://docs.aws.amazon.com/ko_kr/sdk-for-javascript/v2/developer-guide/s3-example-photo-album.html)
