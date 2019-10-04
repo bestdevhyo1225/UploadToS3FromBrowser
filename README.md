@@ -56,7 +56,7 @@
 
 `2019년 10월 4일 (금)`
 
-* `AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고, 실행하니 된다. 왜 되는걸까? ACL이 뭔지 공부해야하자.
+* `AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고, 실행하니 된다. 왜 되는걸까?
 * `putObject()`로 S3에 업로드하는 것과 `ManagedUpload()`를 사용하여 업로드 하는것의 차이는??
 
 <br>
