@@ -180,6 +180,8 @@ alert('File upload success!');
 
 3. putObject()로 S3에 업로드하는 것과 ManagedUpload()를 사용하여 업로드 하는것의 차이를 공부하기
 
+4. 이 방식이 문제점이 있는지 고민하고 사람들에게 물어보기
+
 <br>
 
 ### :bookmark: 참고
