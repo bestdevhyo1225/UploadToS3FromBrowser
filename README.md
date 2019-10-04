@@ -173,6 +173,24 @@ alert('File upload success!');
 
 <br>
 
+### :memo: 다음 목표
+
+**1. 로그인 기능을 추가해서 구현하기**
+
+* 사용자가 로그인을 하면 인증 과정을 통해 자격 증명 풀 ID를 발급한다.
+
+    `Cookie & Session 방식?`
+
+    `JWT(Json Web Token) 방식?`
+
+* 사용자가 이미지, 동영상, 음악파일을 저장하려고 할 때, 서버를 거치지 않고 S3에 저장하도록 구현한다.
+
+**2. 이미지, 동영상, 음악파일을 서버에 전달하고, 서버에서 직접 저장하도록 구현해서 비교해보기**
+
+* 근데 2개의 방식으로 어떻게 서버 성능을 테스트 하지??
+
+<br>
+
 ### :bookmark: 참고
 
 * [AWS Cognito](https://docs.aws.amazon.com/ko_kr/cognito/latest/developerguide/what-is-amazon-cognito.html)
