@@ -18,7 +18,7 @@ const secret = async (req: Request, res: Response): Promise<void> => {
         BUCKET_REGION : BUCKET_REGION,
         BUCKET_NAME : BUCKET_NAME
     }
-    res.json({ cogInfo : cogInfo });
+    res.json(cogInfo);
 }
 
 export default {

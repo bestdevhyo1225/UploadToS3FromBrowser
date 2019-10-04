@@ -3,9 +3,14 @@ html(lang="ko")
     head
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1")
-        script(src="https://sdk.amazonaws.com/js/aws-sdk-2.539.0.min.js")
+        script(src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js")
         script(src="https://kit.fontawesome.com/349e8f098a.js")
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
     body
-        div(id="secret_cognito" style="display:none")=cogInfo
+        div(class="title_section")
+            h1 Uploading To AWS S3 From a Browser
+        div(class="main_section")
+            input(type="file" value="파일 선택" id="getFile")
+            button(id="uploadFileBtn" onclick="uploadPhoto()") 파일 업로드
     script
         include ../public/js/index.js
