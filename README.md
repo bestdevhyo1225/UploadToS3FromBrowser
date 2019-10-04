@@ -164,12 +164,11 @@ alert('File upload success!');
 
 `2019년 10월 3일 (목)`
 
-> Cognito와 관련된 IAM 역할 2개(인증, 비인증)중에서 둘 다 S3에 접근할 수 있는 정책을 추가 했는데 `AccessDenied: Access Denied (403: Forbidden)` 에러가 뜬다. S3 버킷 정책도 추가했지만 마찬가지로 똑같은 문제가 발생한다.
+Cognito와 관련된 IAM 역할 2개(인증, 비인증)중에서 둘 다 S3에 접근할 수 있는 정책을 추가 했는데 `AccessDenied: Access Denied (403: Forbidden)` 에러가 뜬다. S3 버킷 정책도 추가했지만 마찬가지로 똑같은 문제가 발생한다.
 
 `2019년 10월 4일 (금)`
 
-> `AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고 실행하니 됐다. 되는 이유는 `권한`탭에서 `모든 퍼블릭 액세스 차단`을 활성화 시켰기 때문에 버킷 정책에서 내가 접근할 수 있도록 설정한 역할만 접근할 수 있었던 것이다.
->
+`AWS.S3.ManagedUpload` 함수의 params 파라미터의 `ACL: 'public-read`를 삭제하고 실행하니 됐다. 되는 이유는 `권한`탭에서 `모든 퍼블릭 액세스 차단`을 활성화 시켰기 때문에 버킷 정책에서 내가 접근할 수 있도록 설정한 역할만 접근할 수 있었던 것이다.
 
 <br>
 
