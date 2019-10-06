@@ -15,7 +15,7 @@ const uploadPhoto = async () => {
 
         // File Upload
         const file = files[0];
-        const upload = new AWS.S3.ManagedUpload({ 
+        const upload = new AWS.S3.ManagedUpload({
             params: { 
                 Bucket: cognitoInfo.BUCKET_NAME,
                 Key: file.name,
